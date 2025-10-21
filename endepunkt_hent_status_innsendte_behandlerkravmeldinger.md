@@ -2,7 +2,7 @@
 
 | Felt              | Verdi                                     |
 | ----------------- | ----------------------------------------- |
-| **Path**          | `/kuhr/krav/v1/data/behandlerkrav` |
+| **Path**          | `/kuhr/krav/v1/data/behandlerkravmelding` |
 | **HTTP Method**   | `GET`                                     |
 | **Scope**         | `nav:kuhr/krav`                           |
 | **Response type** | `application/json`                        |
@@ -26,10 +26,11 @@ Etter at en **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for
 
 ### **kontrollstatus**
 
-| Verdi                | Beskrivelse                                    |
-| -------------------- | ---------------------------------------------- |
-| `kontrolleres`       | Kontroll pågår.                                |
-| `ferdig_kontrollert` | Kontrollen er ferdig og resultatet klart.      |
+| Verdi                | Beskrivelse                               |
+| -------------------- |-------------------------------------------|
+| `ikke_sendt_til_kontroll`| Kravet er ikke sendt til kontroll         |
+| `kontrolleres`       | Kontroll pågår.                           |
+| `ferdig_kontrollert` | Kontrollen er ferdig og resultatet klart. |
 
 ### **utbetalingsstatus**
 
@@ -48,7 +49,7 @@ Etter at en **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for
 Brukes når man henter **alle innsendte behandlerkravmeldinger** 
 
 ```http
-GET /kuhr/krav/v1/data/behandlerkrav
+GET /kuhr/krav/v1/data/behandlerkravmelding
 ```
 
 | Felt                          | Type     | Beskrivelse                                                                         |
@@ -74,7 +75,7 @@ GET /kuhr/krav/v1/data/behandlerkrav
 Brukes når man henter **detaljer for et spesifikt krav**.
 
 ```http
-GET /kuhr/krav/v1/data/behandlerkrav/<behandlerkravmeldingId>
+GET /kuhr/krav/v1/data/behandlerkravmelding/<behandlerkravmeldingId>
 ```
 
 | Felt                       | Type     | Beskrivelse                                    |
@@ -123,7 +124,7 @@ GET /kuhr/krav/v1/data/behandlerkrav/<behandlerkravmeldingId>
 **Request**
 
 ```http
-GET /kuhr/krav/v1/data/behandlerkrav
+GET /kuhr/krav/v1/data/behandlerkravmelding
 ```
 
 **Response (200 OK)**
@@ -163,7 +164,7 @@ GET /kuhr/krav/v1/data/behandlerkrav
 **Request**
 
 ```http
-GET /kuhr/krav/v1/data/behandlerkrav/3f5cb512-d274-4c93-90af-437391c4294a
+GET /kuhr/krav/v1/data/behandlerkravmelding/3f5cb512-d274-4c93-90af-437391c4294a
 ```
 
 **Response (200 OK)**

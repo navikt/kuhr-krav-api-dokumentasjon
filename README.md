@@ -32,9 +32,9 @@ Selve innsendingen skjer ved å sende en BKM kryptert med KUHRs offentlige nøkk
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------- | --------- |-----------------------------------------------------------------------------------------------------------------------|
 | [Hent registrerte praksiser](endepunkt_hent_registrerte_praksiser.md)                       | /kuhr/krav/v1/data/praksis                                   | nav:kuhr/krav                 | GET/JSON  | Gir oversikt over praksiser registrert på helseaktøren. Brukes for å velge praksis-id ved innsending av krav.         |
 | [Send inn behandlerkrav](endepunkt_send_inn_behandlerkravmelding.md)                        | /kuhr/krav/v1/process/sendinnbehandlerkravmelding            | nav:kuhr/krav                 | POST/JWE  | Innsending av BKM.                                                                                                    |
-| [Hent status for innsendte krav](endepunkt_hent_status_innsendte_behandlerkravmeldinger.md) | /kuhr/krav/v1/data/behandlerkrav                             | nav:kuhr/krav                 | GET/JSON  | Henter oversikt over alle innsendte krav eller detaljer for et enkelt krav, inkludert kontrollresultat og utbetaling. |
+| [Hent status for innsendte krav](endepunkt_hent_status_innsendte_behandlerkravmeldinger.md) | /kuhr/krav/v1/data/behandlerkravmelding                             | nav:kuhr/krav                 | GET/JSON  | Henter oversikt over alle innsendte krav eller detaljer for et enkelt krav, inkludert kontrollresultat og utbetaling. |
 | [Hent pasientens oppmøter](endepunkt_hent_pasientensoppmoter.md)                            | /kuhr/oppslagpasientreiser/v1/process/hentpasientensoppmoter | nav:kuhr/oppslagpasientreiser | POST/JSON | Henter oversikt over oppmøter en pasient er registrert med i KUHR. (Kun tilgjengelig for Pasientreiser ANS.)          |
-| KUHR Public Certificate Key - JWK                                                           | /kuhr/jwk/jwk                                                | nav:kuhr/jwk                  | GET/JSON  | Returnerer KUHRs offentlige nøkkel (JWK) for kryptering av POST-requests.                                             |
+| KUHR Public Certificate Key - JWK                                                           | /kuhr/jwk                                                | nav:kuhr/jwk                  | GET/JSON  | Returnerer KUHRs offentlige nøkkel (JWK) for kryptering av POST-requests.                                             |
 
 ---
 
@@ -102,6 +102,8 @@ Behandleren må være registrert hos Helfo med gyldig avtale og praksis.
 
 Mer informasjon:
 [HelseID – NHN utviklerportal](https://utviklerportal.nhn.no/informasjonstjenester/helseid/)
+
+For APIet brukes HelseID scope **hdir:kuhr-krav-api/krav**
 
 ---
 

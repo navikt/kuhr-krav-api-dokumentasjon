@@ -48,7 +48,7 @@ Ved feil gis det en status = `feil_i_melding` med en eller flere feilmeldinger.
 | UKJENT_FORMAT                      | Behandlerkravmelding har ikke JSON-format                                |
 | UKJENT_FELT                        | Ukjent felt i JSON                                                       |
 | MANGLER_PRAKSISID                  | Mangler påkrevd felt `praksisId`                                         |
-| MANGLER_BEHANDLERKRAVMELDING  | Mangler påkrevd felt `behandlerkrav`                                     |
+| MANGLER_BEHANDLERKRAV  | Mangler påkrevd felt `behandlerkrav`                                     |
 | MANGLER_REGNINGER             | Mangler påkrevd felt `regninger`                                         |
 | MANGLER_GUID                  | Mangler påkrevd felt `guid`                                              |
 | UKJENT_PRAKSISID    | Oppgitt `praksisId` finnes ikke for helseaktøren                         |
@@ -122,9 +122,9 @@ POST /kuhr/krav/v1/process/sendinnbehandlerkravmelding
 {
   "behandlerkravmeldingId": "9101aba1-d5a2-410f-8ab8-22da30dca5db",
   "status": "feil_i_melding",
-  "tilbakemelding": [
+  "feilmeldinger": [
     {
-      "kontrollNr": "FK4",
+      "kode": "MANGLER_BEHANDLERKRAV",
       "melding": "Mangler påkrevd felt behandlerkrav"
     }
   ]
