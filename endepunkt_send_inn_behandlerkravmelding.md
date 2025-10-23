@@ -116,7 +116,7 @@ POST /kuhr/krav/v1/process/sendinnbehandlerkravmelding
 }
 ```
 
-**Response (200 OK)**
+**Response (400 Bad Request)**
 
 ```json
 {

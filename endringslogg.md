@@ -1,3 +1,7 @@
+## 2025-10-23
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Endret fra HTTP 200 til 400 Bad Request på feilmeldingrespons
+
 ## 2025-10-21 
 endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
 - Endret path /kuhr/krav/v1/data/behandlerkrav til /kuhr/krav/v1/data/behandlerkravmelding
