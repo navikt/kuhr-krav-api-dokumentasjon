@@ -1,10 +1,10 @@
 # Endepunkt: Hent status innsendte behandlerkravmeldinger
 
 | Felt              | Verdi                                     |
-| ----------------- | ----------------------------------------- |
+|-------------------|-------------------------------------------|
 | **Path**          | `/kuhr/krav/v1/data/behandlerkravmelding` |
 | **HTTP Method**   | `GET`                                     |
-| **Scope**         | `nav:kuhr/krav`                           |
+| **Scope (en av)** | `nav:kuhr/krav` <br> `hdir:kuhr-krav-api/krav`                     |
 | **Response type** | `application/json`                        |
 
 Etter at en **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for å hente status og informasjon om kontroll og utbetaling.
@@ -63,7 +63,6 @@ GET /kuhr/krav/v1/data/behandlerkravmelding
 | └─ **vedtakId**               | String   | ID for vedtaket                                                |
 | └─ **praksisId**              | String   | ID til praksisen som har sendt kravet.                                              |
 | └─ **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`).              |
-| └─ **oppdaterttidspunkt**     | DateTime | Tidspunkt for siste oppdatering.                                                    |
 | └─ **sumKravbelop**           | Number   | Samlet kravbeløp                                                        |
 | └─ **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                   |
 | └─ **antallRegninger**        | Integer  | Antall regninger i kravet                                               |
@@ -84,14 +83,14 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/<behandlerkravmeldingId>
 | **meldingsstatus**         | String   | Teknisk status for meldingen.                  |
 | **kontrollstatus**         | String   | Status for kontroll.                           |
 | **utbetalingsstatus**      | String   | Status for utbetaling.                         |
-| **praksisId**              | String   | ID til praksisen som har sendt kravet.         |
-| **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt.       |
-| **oppdaterttidspunkt**     | DateTime | Tidspunkt for siste oppdatering.               |
+| **innsendingId**           | String   | ID for innsendingen                                            |
+| **vedtakId**               | String   | ID for vedtaket                                                |
+| **praksisId**              | String   | ID til praksisen som har sendt kravet.                                              |
+| **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`).              |
+| **sumKravbelop**           | Number   | Samlet kravbeløp                                                        |
+| **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                   |
+| **antallRegninger**        | Integer  | Antall regninger i kravet                                               |
 | **innsending**             | Object   | Informasjon om innsendingen.                   |
-| └─ **innsendingId**        | String   | ID for innsendingen.                           |
-| └─ **sumKravbelop**        | Number   | Samlet kravbeløp.                              |
-| └─ **sumUtbetaltbelop**    | Number   | Samlet utbetalt beløp.                         |
-| └─ **antallRegninger**     | Integer  | Antall regninger i kravet.                     |
 | └─ **regninger**           | Array    | Liste over regninger i innsendingen.           |
 |    └─ **status**           | String   | Status for regningen.                          |
 |    └─ **guid**             | String   | GUID for regningen.                            |
@@ -101,7 +100,6 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/<behandlerkravmeldingId>
 |      └─ **tekst**          | String   | Beskrivelse av merknaden.                      |
 | └─ **merknader**           | Array    | Eventuelle merknader på innsendingen.          |
 | **vedtak**                 | Object   | Informasjon om vedtaket.                       |
-| └─ **vedtakId**            | String   | ID for vedtaket.                               |
 | └─ **innsendinger**        | Array    | Liste over innsendinger som inngår i vedtaket. |
 |    └─ **innsendingId**     | String   | ID for innsending.                             |
 | └─ **utbetaling**          | Object   | Utbetalingsinformasjon.                        |
@@ -136,8 +134,7 @@ GET /kuhr/krav/v1/data/behandlerkravmelding
       "behandlerkravmeldingId": "9101aba1-d5a2-410f-8ab8-22da30dca5db",
       "meldingsstatus": "mottatt",
       "praksisId" : "1004326178",
-      "mottattidspunkt" : "2025-07-17T11:20:00+02:00",
-      "oppdaterttidspunkt" : "2025-07-17T11:20:00+02:00"
+      "mottattidspunkt" : "2025-07-17T11:20:00+02:00"
     },
     {
       "behandlerkravmeldingId": "ab1355d2-871b-4cc7-a143-f62125fab9ca",
@@ -148,7 +145,6 @@ GET /kuhr/krav/v1/data/behandlerkravmelding
       "vedtakId": "",
       "praksisId" : "1004326178",
       "mottattidspunkt" : "2025-07-16T11:20:00+02:00",
-      "oppdaterttidspunkt" : "2025-07-17T11:20:00+02:00",
       "sumKravbelop" : 500.0,
       "sumUtbetaltbelop" : 500.0,
       "antallRegninger" : 1
@@ -177,7 +173,6 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/3f5cb512-d274-4c93-90af-437391c4294a
   "utbetalingsstatus": "ingen_utbetaling",  
   "praksisId": "1004326178",
   "mottattidspunkt": "2025-07-16T11:20:00+02:00",
-  "oppdaterttidspunkt" : "2025-07-17T11:20:00+02:00",
   "innsending": {
     "innsendingId": "",
     "sumKravbelop": 0.0,

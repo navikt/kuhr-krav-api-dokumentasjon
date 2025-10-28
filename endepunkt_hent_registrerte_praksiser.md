@@ -4,7 +4,7 @@
 | ----------------- | ---------------------------- |
 | **Path**          | `/kuhr/krav/v1/data/praksis` |
 | **HTTP Method**   | `GET`                        |
-| **Scope**         | `nav:kuhr/krav`     |
+| **Scope (en av)** | `nav:kuhr/krav` <br> `hdir:kuhr-krav-api/krav`                     |
 | **Response type** | `application/json`           |
 
 

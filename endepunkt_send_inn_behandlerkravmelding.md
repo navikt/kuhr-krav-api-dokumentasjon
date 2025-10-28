@@ -4,7 +4,7 @@
 | ----------------- |-----------------------------------------------------|
 | **Path**          | `/kuhr/krav/v1/process/sendinnbehandlerkravmelding` |
 | **HTTP Method**   | `POST`                                              |
-| **Scope**         | `nav:kuhr/krav`                                     |
+| **Scope (en av)** | `nav:kuhr/krav` <br> `hdir:kuhr-krav-api/krav`                     |
 | **Request type**  | JWE                                                 |
 | **Response type** | `application/json`                                  |
 
