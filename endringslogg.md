@@ -1,7 +1,12 @@
+## 2025-10-31
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Fjernet listen over innsendinger på vedtak
+- Fjernet felt utbetalingId
+
+
 ## 2025-10-29
 README.md
 - Endret scope for JWK endepunktet fra nav:kuhr/jwk til nav:kuhr/krav
-
 
 
 ## 2025-10-28

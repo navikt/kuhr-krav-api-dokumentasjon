@@ -100,10 +100,7 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/<behandlerkravmeldingId>
 |      └─ **tekst**          | String   | Beskrivelse av merknaden.                      |
 | └─ **merknader**           | Array    | Eventuelle merknader på innsendingen.          |
 | **vedtak**                 | Object   | Informasjon om vedtaket.                       |
-| └─ **innsendinger**        | Array    | Liste over innsendinger som inngår i vedtaket. |
-|    └─ **innsendingId**     | String   | ID for innsending.                             |
 | └─ **utbetaling**          | Object   | Utbetalingsinformasjon.                        |
-|    └─ **utbetalingId**     | String   | ID for utbetalingen.                           |
 |    └─ **belop**            | Number   | Utbetalt beløp.                                |
 |    └─ **utbetaltdato**     | Date     | Dato for utbetalingen.                         |
 |    └─ **kontonr**          | String   | Kontonummer for utbetalingen.                  |
@@ -199,12 +196,7 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/3f5cb512-d274-4c93-90af-437391c4294a
     ]
   },
   "vedtak": {
-    "vedtakId": "",
-    "innsendinger": [
-      { "innsendingId": "" }
-    ],
     "utbetaling": {
-      "utbetalingId": "",
       "belop": 0.0,
       "utbetaltdato": "",
       "kontonr": "",
