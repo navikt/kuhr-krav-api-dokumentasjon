@@ -18,11 +18,12 @@ Etter at en **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for
 
 ### **meldingsstatus**
 
-| Verdi                  | Beskrivelse                                              |
-| ---------------------- | -------------------------------------------------------- |
-| `mottatt`              | Meldingen er mottatt og venter på videre behandling.     |
-| `sendt_til_behandling` | Meldingen er sendt til kontroll og eventuell utbetaling. |
-| `feil_i_melding`       | Teknisk feil i meldingen, den kan ikke behandles videre. |
+| Verdi                   | Beskrivelse                                              |
+|-------------------------|----------------------------------------------------------|
+| `mottatt`               | Meldingen er mottatt og venter på videre behandling.     |
+| `klar_til_behandling`   | Meldingen er klar til kontroll og eventuell utbetaling.  |
+| `sendt_til_behandling`  | Meldingen er sendt til kontroll og eventuell utbetaling. |
+| `feil_i_melding`        | Teknisk feil i meldingen, den kan ikke behandles videre. |
 
 ### **kontrollstatus**
 

@@ -1,3 +1,11 @@
+## 2025-11-13
+endepunkt_send_inn_behandlerkravmelding.md
+- Lagt til at det gis HTTP 400 på feil i melding
+
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Ny meldingsstatus klar_til_behandling
+
+
 ## 2025-10-31
 endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
 - Fjernet listen over innsendinger på vedtak

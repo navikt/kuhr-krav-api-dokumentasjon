@@ -41,7 +41,7 @@ Ved innsending gjøres følgende kontroller:
 * **PraksisId** – må eksistere og være autorisert for innlogget samhandler.
 * **Duplikatkontroll** – meldingen er ikke allerede sendt inn og lagret.
 
-Ved feil gis det en status = `feil_i_melding` med en eller flere feilmeldinger.
+Ved feil gis det en status = `feil_i_melding` og HTTP 400, med en eller flere feilmeldinger i responsen
 
 | Kode                                   | Beskrivelse                                                              |
 | -------------------------------------- |--------------------------------------------------------------------------|

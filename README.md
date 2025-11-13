@@ -90,7 +90,6 @@ Mer informasjon:
 | Scope                         | Beskrivelse                                      |
 | ----------------------------- | ------------------------------------------------ |
 | nav:kuhr/krav                 | Tilgang til innsending og oppslag av krav.       |
-| nav:kuhr/jwk                  | Tilgang til KUHRs offentlige nøkkel (JWK).       |
 | nav:kuhr/oppslagpasientreiser | Tilgang til pasientoppmøter (kun Pasientreiser). |
 
 ---
