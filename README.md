@@ -122,7 +122,7 @@ Mer informasjon:
 
 | Miljø | KUHR Krav API URL                                                            | Maskinporten                                                         | HelseID         |
 | ----- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------- |
-| DEV   | [https://api-preprod.helserefusjon.no](https://api-preprod.helserefusjon.no) | [https://test.maskinporten.no/jwk](https://test.maskinporten.no/jwk) | (kommer senere) |
+| DEV   | [https://api-preprod.helserefusjon.no](https://api-preprod.helserefusjon.no) | [https://test.maskinporten.no/jwk](https://test.maskinporten.no/jwk) | https://helseid-sts.test.nhn.no/.well-known/openid-configuration/jwks |
 | PROD  | (kommer senere)                                                              | (kommer senere)                                                      | (kommer senere) |
 
 ---

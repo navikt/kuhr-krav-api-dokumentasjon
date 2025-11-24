@@ -1,3 +1,11 @@
+## 2025-11-24
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Fjernet innsendingId fra innsendingen i JSON eksempel
+- Lagt til vedtakId og innsendinId i JSON eksempel
+
+README.md
+- Lagt til HelseID miljø for DEV
+
 ## 2025-11-13
 endepunkt_send_inn_behandlerkravmelding.md
 - Lagt til at det gis HTTP 400 på feil i melding
