@@ -1,3 +1,6 @@
+## 2025-11-25
+Lagt til testdata.md
+
 ## 2025-11-24
 endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
 - Fjernet innsendingId fra innsendingen i JSON eksempel
