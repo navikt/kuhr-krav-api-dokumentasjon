@@ -96,7 +96,7 @@ Mer informasjon:
 
 ### HelseID (behandlere)
 
-Behandlere som fremsetter krav personlig bruker **HelseID** til autentisering og autorisasjon.
+Behandlere som fremsetter krav personlig bruker **HelseID** til autentisering og autorisasjon. Det betyr at EPJen må tilby sluttbruker pålogging med HelseID.
 Behandleren må være registrert hos Helfo med gyldig avtale og praksis.
 
 Mer informasjon:

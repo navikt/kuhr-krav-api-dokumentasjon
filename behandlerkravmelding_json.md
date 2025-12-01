@@ -305,7 +305,7 @@ Unikt nummer per regning for hver behandler. Dette gjelder i forhold til alle re
     </tr>
     <tr>
       <td colspan="2">
-Dato og klokkeslett ved oppstart av konsultasjon/behandling. Angiis på formatet 2009-04-02T10:05:24
+Dato og klokkeslett ved oppstart av konsultasjon/behandling. Angis på formatet YYYY-MM-DDTHH:mm:ss±hh:mm
       </td>
     </tr>
   </tbody>

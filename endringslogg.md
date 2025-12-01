@@ -1,3 +1,12 @@
+## 2025-12-01
+README.md
+- Tydeligjort at det kreves sluttbrukerpålogging med HelseID
+
+behandlerkravmelding_json
+- Endret format på behandlerkrav.regninger.tidspunkt til YYYY-MM-DDTHH:mm:ss±hh:mm
+
+
+
 ## 2025-11-25
 Lagt til testdata.md
 
