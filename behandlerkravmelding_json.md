@@ -826,7 +826,7 @@ For lege, psykolog, ortoptist og andre behandlere som mottar henvisninger: Angir
     </tr>
     <tr>
       <th>Felt i BKM XML</th>
-      <td>Behandling.RelatertBehandler.TypeId</td>
+      <td></td>
     </tr>
     <tr>
       <td colspan="2">

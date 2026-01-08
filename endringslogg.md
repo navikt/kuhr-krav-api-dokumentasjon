@@ -1,3 +1,10 @@
+## 2026-01-08
+behandlerkravmelding_json.md
+- Fjernet mapping til felt Behandling.RelatertBehandler.TypeId i BKM XML
+
+jwe_ende_til_ende_kryptering.md
+- Fjernet ekstra /jwk på URL
+
 ## 2025-12-01
 README.md
 - Tydeligjort at det kreves sluttbrukerpålogging med HelseID
