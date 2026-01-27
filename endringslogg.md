@@ -1,3 +1,8 @@
+## 2026-01-27
+README.md
+- Lagt til bruk av delegering for Maskinporten
+
+
 ## 2026-01-08
 behandlerkravmelding_json.md
 - Fjernet mapping til felt Behandling.RelatertBehandler.TypeId i BKM XML

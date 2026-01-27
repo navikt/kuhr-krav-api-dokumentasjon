@@ -85,6 +85,8 @@ Organisasjonen må være registrert både i Maskinporten og hos Helfo, med samme
 Mer informasjon:
 [Maskinporten – API-konsumentguide](https://docs.digdir.no/docs/Maskinporten/maskinporten_guide_apikonsument.html)
 
+API-tilgangen kan delegeres videre til en leverandør gjennom Altinn.
+
 **Maskinporten-scopes**
 
 | Scope                         | Beskrivelse                                      |
