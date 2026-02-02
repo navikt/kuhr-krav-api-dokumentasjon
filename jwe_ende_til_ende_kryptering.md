@@ -7,7 +7,7 @@ Det betyr at klienten krypterer forespørselen med KUHR sin offentlige nøkkel f
 
 **KUHR JWK-endepunkter:**
 
-* **DEV:** [https://api-preprod.helserefusjon.no/kuhr/jwk](https://api-preprod.helserefusjon.no/kuhr/jwk/jwk)
+* **DEV:** [https://api-preprod.helserefusjon.no/kuhr/krav/v1/jwk](https://api-preprod.helserefusjon.no/kuhr/jwk/jwk)
 * **PROD:** *(kommer)*
 
 ---

@@ -1,3 +1,10 @@
+## 2026-02-02
+README.md
+- Ny path /kuhr/krav/v1/jwk til JWK endekpunktet
+
+jwe_ende_til_ende_kryptering.md
+- Ny path /kuhr/krav/v1/jwk til JWK endekpunktet
+
 ## 2026-01-27
 README.md
 - Lagt til bruk av delegering for Maskinporten
