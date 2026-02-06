@@ -7,7 +7,7 @@
 | **Scope (en av)** | `nav:kuhr/krav` <br> `hdir:kuhr-krav-api/krav`                     |
 | **Response type** | `application/json`                        |
 
-Etter at en **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for å hente status og informasjon om kontroll og utbetaling.
+Etter at et **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for å hente status og informasjon om kontroll og utbetaling.
 
 * Man kan hente en **oversikt over alle innsendte krav**.
 * Man kan hente **detaljer for et enkelt krav**, inkludert kontrollresultater og utbetalingsinformasjon.
@@ -15,8 +15,11 @@ Etter at en **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for
 ---
 
 ## Statuser i behandlingsprosessen
+En krav som sendes til KUHR går igjennom tre steg frem til en endelig utbetaling og utsending av vedtaksbrev. Disse går i sekvens, er asynkrone både internt og i forhold til hverandre og kan variere i behandlingstid avhengig av størrelse på kravet, eksterne systemer og prosesser og eventuell manuellsaksbehandling.  
 
 ### **meldingsstatus**
+Først mottas kravet som en melding og det gjøres en grunnleggende teknisk kontroll om kravet kan behandles, før det sendes videre til kontrollen. Dette steget tar normalt 1-2 sekunder, før meldingen er sendt til behandling.
+
 
 | Verdi                   | Beskrivelse                                              |
 |-------------------------|----------------------------------------------------------|
@@ -26,21 +29,35 @@ Etter at en **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for
 | `feil_i_melding`        | Teknisk feil i meldingen, den kan ikke behandles videre. |
 
 ### **kontrollstatus**
+Det neste steget er kontrollen av regningene i kravet. Hovedsakelig gjøres dette helt automatisk og resultatet vil normalt være klart i løpet 10-20 sekunder.
 
-| Verdi                | Beskrivelse                               |
-| -------------------- |-------------------------------------------|
-| `ikke_sendt_til_kontroll`| Kravet er ikke sendt til kontroll         |
-| `kontrolleres`       | Kontroll pågår.                           |
-| `ferdig_kontrollert` | Kontrollen er ferdig og resultatet klart. |
+I enkelte tilfeller vil kravet måtte kontrolleres manuelt og det vil ta betydelig lenger tid før resultatet er klart. Status blir da satt til kontrolleres_manuelt.
+
+Resultatet av kontrollen er ikke tilgjengelig før kontrollstatus er ferdig_kontrollert. Det vil si at status på regningene er behandles inntil da.
+
+| Verdi                     | Beskrivelse                               |
+|---------------------------|-------------------------------------------|
+| `ikke_sendt_til_kontroll` | Kravet er ikke sendt til kontroll         |
+| `kontrolleres`            | Kontroll pågår.                           |
+| `kontrolleres_manuelt`    | Kontroll pågår manuelt.                   |
+| `ferdig_kontrollert`      | Kontrollen er ferdig og resultatet klart. |
 
 ### **utbetalingsstatus**
+Det siste steget er vedtak og utbetaling. Denne prosessen starter kl 16 hver ettermiddag. Da blir det laget en utbetaling som normalt tar 2-3 virkedager før er gjennomført.
 
-| Verdi                       | Beskrivelse                        |
-| --------------------------- | ---------------------------------- |
-| `ikke_sendt_til_utbetaling` | Ikke sendt videre til utbetaling.  |
-| `sendt_til_utbetaling`      | Meldingen er sendt til utbetaling. |
-| `utbetalt`                  | Utbetalingen er gjennomført.       |
-| `ingen_utbetaling`          | Ingen utbetaling skal foretas.     |
+I enkelte tilfeller skal det ikke gjøres en utbetaling og man får en ingen_utbetaling status.
+
+Etter at utbetalingen er gjennomført blir det sendt ut et vedtaksbrev på e-post til helseaktøren. Den samme informasjonen er tilgjengelig i APIet.
+
+Et vedtak og en utbetaling kan gjelde flere krav. Hvis det blir sendt inn flere krav samme dag så vil disse samles opp på samme utbetaling. Det betyr at de får samme vedtakId. 
+
+
+| Verdi                       | Beskrivelse                       |
+| --------------------------- |-----------------------------------|
+| `ikke_sendt_til_utbetaling` | Ikke sendt videre til utbetaling. |
+| `sendt_til_utbetaling`      | Kravet er sendt til utbetaling.   |
+| `utbetalt`                  | Utbetalingen er gjennomført.      |
+| `ingen_utbetaling`          | Ingen utbetaling skal foretas.    |
 
 ---
 
@@ -53,20 +70,20 @@ Brukes når man henter **alle innsendte behandlerkravmeldinger**
 GET /kuhr/krav/v1/data/behandlerkravmelding
 ```
 
-| Felt                          | Type     | Beskrivelse                                                                         |
-| ----------------------------- | -------- | ----------------------------------------------------------------------------------- |
-| **behandlerkravmeldinger**    | Array    | Liste over innsendte behandlerkravmeldinger.                                        |
-| └─ **behandlerkravmeldingId** | String   | Unik identifikator (GUID) for kravet.                                               |
-| └─ **meldingsstatus**         | String   | Teknisk status for meldingen (`mottatt`, `sendt_til_behandling`, `feil_i_melding`). |
-| └─ **kontrollstatus**         | String   | Status for kontroll (f.eks. `kontrolleres`, `ferdig_kontrollert`)     |
-| └─ **utbetalingsstatus**      | String   | Status for utbetaling (`utbetalt`, `ingen_utbetaling` osv.)          |
-| └─ **innsendingId**           | String   | ID for innsendingen                                            |
-| └─ **vedtakId**               | String   | ID for vedtaket                                                |
-| └─ **praksisId**              | String   | ID til praksisen som har sendt kravet.                                              |
-| └─ **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`).              |
-| └─ **sumKravbelop**           | Number   | Samlet kravbeløp                                                        |
-| └─ **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                   |
-| └─ **antallRegninger**        | Integer  | Antall regninger i kravet                                               |
+| Felt                          | Type     | Beskrivelse                                                            |
+| ----------------------------- | -------- |------------------------------------------------------------------------|
+| **behandlerkravmeldinger**    | Array    | Liste over innsendte behandlerkravmeldinger.                           |
+| └─ **behandlerkravmeldingId** | String   | Unik identifikator (GUID) for meldingen.                               |
+| └─ **meldingsstatus**         | String   | Teknisk status for meldingen.                                          |
+| └─ **kontrollstatus**         | String   | Status for kontroll                                                    |
+| └─ **utbetalingsstatus**      | String   | Status for utbetaling                                                  |
+| └─ **innsendingId**           | String   | ID for innsendingen                                                    |
+| └─ **vedtakId**               | String   | ID for vedtaket. Et vedtak og en utbetaling kan gjelde flere krav.     |
+| └─ **praksisId**              | String   | ID til praksisen som har sendt kravet.                                 |
+| └─ **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`). |
+| └─ **sumKravbelop**           | Number   | Samlet kravbeløp                                                       |
+| └─ **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                  |
+| └─ **antallRegninger**        | Integer  | Antall regninger i kravet                                              |
 
 ---
 
@@ -78,37 +95,37 @@ Brukes når man henter **detaljer for et spesifikt krav**.
 GET /kuhr/krav/v1/data/behandlerkravmelding/<behandlerkravmeldingId>
 ```
 
-| Felt                       | Type     | Beskrivelse                                    |
-| -------------------------- | -------- | ---------------------------------------------- |
-| **behandlerkravmeldingId** | String   | Unik identifikator (GUID) for kravet.          |
-| **meldingsstatus**         | String   | Teknisk status for meldingen.                  |
-| **kontrollstatus**         | String   | Status for kontroll.                           |
-| **utbetalingsstatus**      | String   | Status for utbetaling.                         |
-| **innsendingId**           | String   | ID for innsendingen                                            |
-| **vedtakId**               | String   | ID for vedtaket                                                |
-| **praksisId**              | String   | ID til praksisen som har sendt kravet.                                              |
-| **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`).              |
-| **sumKravbelop**           | Number   | Samlet kravbeløp                                                        |
-| **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                   |
-| **antallRegninger**        | Integer  | Antall regninger i kravet                                               |
-| **innsending**             | Object   | Informasjon om innsendingen.                   |
-| └─ **regninger**           | Array    | Liste over regninger i innsendingen.           |
-|    └─ **status**           | String   | Status for regningen.                          |
-|    └─ **guid**             | String   | GUID for regningen.                            |
-|    └─ **regningsnummer**   | String   | Regningsnummer.                                |
-|    └─ **merknader**        | Array    | Eventuelle merknader på regningen.             |
-|      └─ **nummer**         | String   | Merknadskode.                                  |
-|      └─ **tekst**          | String   | Beskrivelse av merknaden.                      |
-| └─ **merknader**           | Array    | Eventuelle merknader på innsendingen.          |
-| **vedtak**                 | Object   | Informasjon om vedtaket.                       |
-| └─ **utbetaling**          | Object   | Utbetalingsinformasjon.                        |
-|    └─ **belop**            | Number   | Utbetalt beløp.                                |
-|    └─ **utbetaltdato**     | Date     | Dato for utbetalingen.                         |
-|    └─ **kontonr**          | String   | Kontonummer for utbetalingen.                  |
-|    └─ **kid**              | String   | KID-nummer for utbetalingen.                   |
-| └─ **merknader**           | Array    | Eventuelle merknader på vedtaket.              |
-|    └─ **nummer**           | String   | Merknadskode.                                  |
-|    └─ **tekst**            | String   | Beskrivelse av merknaden.                      |
+| Felt                       | Type     | Beskrivelse                                                            |
+| -------------------------- | -------- |------------------------------------------------------------------------|
+| **behandlerkravmeldingId** | String   | Unik identifikator (GUID) for meldingen.                               |
+| **meldingsstatus**         | String   | Teknisk status for meldingen.                                          |
+| **kontrollstatus**         | String   | Status for kontroll.                                                   |
+| **utbetalingsstatus**      | String   | Status for utbetaling.                                                 |
+| **innsendingId**           | String   | ID for innsendingen                                                    |
+| **vedtakId**               | String   | ID for vedtaket. Et vedtak og en utbetaling kan gjelde flere krav.                                                    |
+| **praksisId**              | String   | ID til praksisen som har sendt kravet.                                 |
+| **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`). |
+| **sumKravbelop**           | Number   | Samlet kravbeløp                                                       |
+| **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                  |
+| **antallRegninger**        | Integer  | Antall regninger i kravet                                              |
+| **innsending**             | Object   | Informasjon om innsendingen.                                           |
+| └─ **regninger**           | Array    | Liste over regninger i innsendingen.                                   |
+|    └─ **status**           | String   | Status for regningen. Enten behandles, godkjent eller avvist           |
+|    └─ **guid**             | String   | GUID for regningen.                                                    |
+|    └─ **regningsnummer**   | String   | Regningsnummer.                                                        |
+|    └─ **merknader**        | Array    | Eventuelle merknader på regningen.                                     |
+|      └─ **nummer**         | String   | Merknadskode.                                                          |
+|      └─ **tekst**          | String   | Beskrivelse av merknaden.                                              |
+| └─ **merknader**           | Array    | Eventuelle merknader på innsendingen.                                  |
+| **vedtak**                 | Object   | Informasjon om vedtaket og utbetalingen.                               |
+| └─ **utbetaling**          | Object   | Utbetalingsinformasjon.                                                |
+|    └─ **belop**            | Number   | Utbetalt beløp.                                                        |
+|    └─ **utbetaltdato**     | Date     | Dato for utbetalingen.                                                 |
+|    └─ **kontonr**          | String   | Kontonummer for utbetalingen.                                          |
+|    └─ **kid**              | String   | KID-nummer for utbetalingen.                                           |
+| └─ **merknader**           | Array    | Eventuelle merknader på vedtaket.                                      |
+|    └─ **nummer**           | String   | Merknadskode.                                                          |
+|    └─ **tekst**            | String   | Beskrivelse av merknaden.                                              |
 
 ---
 
@@ -143,8 +160,8 @@ GET /kuhr/krav/v1/data/behandlerkravmelding
       "vedtakId": "",
       "praksisId" : "1004326178",
       "mottattidspunkt" : "2025-07-16T11:20:00+02:00",
-      "sumKravbelop" : 500.0,
-      "sumUtbetaltbelop" : 500.0,
+      "sumKravbelop" : 500,
+      "sumUtbetaltbelop" : 500,
       "antallRegninger" : 1
     }
   ]
@@ -170,44 +187,50 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/3f5cb512-d274-4c93-90af-437391c4294a
   "kontrollstatus": "ferdig_kontrollert",
   "utbetalingsstatus": "ingen_utbetaling",
   "innsendingId": "100001811800023",
-  "vedtakId": "100001811802344",  
+  "vedtakId": "100001811802344",
   "praksisId": "1004326178",
   "mottattidspunkt": "2025-07-16T11:20:00+02:00",
   "innsending": {
-    "sumKravbelop": 0.0,
-    "sumUtbetaltbelop": 0.0,
-    "antallRegninger": 1,
+    "sumKravbelop": 396,
+    "sumUtbetaltbelop": 198,
+    "antallRegninger": 2,
     "regninger": [
       {
-        "status" : "",
-        "guid": "",
-        "regningsnummer": "",
+        "status": "avvist",
+        "guid": "af49247c-09fc-4654-98e4-7d0e7affb4a6",
+        "regningsnummer": "6897",
         "merknader": [
           {
-            "nummer": "",
-            "tekst": ""
+            "nummer": "710",
+            "tekst": "Samhandler har registrert at pasienten har frikort. Frikortvedtak er ikke registrert i frikortregisteret. Fra 1. april 2011 vil slike regninger bli automatisk avvist."
           }
         ]
+      },
+      {
+        "status": "godkjent",
+        "guid": "6f444575-5bdb-43ff-919b-c20cd0d4fa69",
+        "regningsnummer": "6898",
+        "merknader": []
       }
     ],
     "merknader": [
       {
-        "nummer": "",
-        "tekst": ""
+        "nummer": "458",
+        "tekst": "For behandling som kommer inn under frikort for helsetjenester, skal egenandelene rapporteres til Helfo minst hver 14. dag. Helfo anbefaler innsending via Helsenettet, ta kontakt med din EPJ-leverandør for oppkobling. Har du unntak fra å levere via Helsenettet, kan du bruke opplastningstjenesten i tjenesteportal for helseaktør https://internett-portal.helsedirektoratet.no"
       }
     ]
   },
   "vedtak": {
     "utbetaling": {
-      "belop": 0.0,
-      "utbetaltdato": "",
-      "kontonr": "",
-      "kid": ""
+      "belop": 198,
+      "utbetaltdato": "2025-07-20T08:30:00+02:00",
+      "kontonr": "12345678901",
+      "kid": "123456789"
     },
     "merknader": [
       {
-        "nummer": "",
-        "tekst": ""
+        "nummer": "1478",
+        "tekst": "1. januar 2021 ble de to frikort-ordningene for helsetjenester slått sammen til én ordning, med ett felles egenandelstak. Du må rapportere senest 14 dager etter behandlingen, for å unngå at frikortet til pasientene blir forsinket. Ved å se på din oversikt over takstbruk øverst på side 2 i dette vedtaket, vil du se snittalderen på dine regninger med egenandeler. Snittalderen bør være en god del lavere enn 14 dager, fordi du ved innsendingen hver 14. dag rapporterer inn egenandeler som er fra 0 til 14 dager gamle."
       }
     ]
   }

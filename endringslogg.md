@@ -1,3 +1,17 @@
+## 2026-02-06
+README.md
+- Lagt til at krav fra andre kanaler er tilgjengelig i APIet
+
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Ny kontrollstatus=kontrolleres_manuelt
+- Bedre beskrivelse av stegene i prosessen
+- behandles, godkjent eller avvist som status på en regning
+- Oppdatert JSON eksempel
+
+normal_arbeidsflyt_eksempel.md
+- Nytt eksempel på bruk av APIet
+
+
 ## 2026-02-02
 README.md
 - Ny path /kuhr/krav/v1/jwk til JWK endekpunktet

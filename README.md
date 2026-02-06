@@ -9,6 +9,8 @@ API-et kan benyttes av kommuner, privatpraktiserende behandlere og andre helseak
 API-et kan erstatte dagens innsending av behandlerkrav, som beskrevet her:
 [Behandlerkrav (BKM)](https://www.helsedirektoratet.no/standarder/behandlerkravmelding-bkm)
 
+Alle krav som er tidligere sendt inn gjennom andre kanaler vil også være tilgjengelig i APIet for oppfølging og historikk. Det betyr at APIet kan brukes til oversikt og rapportering på tvers av praksiser og systemer over tid for den enkelte helseaktøren.  
+
 ---
 
 ## Forutsetninger
@@ -134,19 +136,13 @@ For mer informasjon om [Testdata](testdata.md)
 
 ## Eksempler
 
-| Navn                           | Beskrivelse                                        | Link           |
-| ------------------------------ | -------------------------------------------------- | -------------- |
-| API-arbeidsflyt                | Eksempel på flyt fra innsending til statusoppslag. | (lenke kommer) |
-| JWE-kryptering av BKM          | Eksempel på kryptering av en behandlerkravmelding. | (lenke kommer) |
-| BKM-eksempel for lege          | JSON-eksempel for legepraksis.                     | (lenke kommer) |
-| BKM-eksempel for tannlege      | JSON-eksempel for tannlege.                        | (lenke kommer) |
-| BKM-eksempel for Pasientreiser | JSON-eksempel for Pasientreiser.                   | (lenke kommer) |
+| Navn                                                     | Beskrivelse                                            |
+|----------------------------------------------------------|--------------------------------------------------------|
+| [API-arbeidsflyt](eksempler/normal_arbeidsflyt_eksempel.md) | Eksempel på flyt fra innsending av krav til utbetaling |
+| BKM-eksempel for lege                                    |                                                        |
+| BKM-eksempel for tannlege                                |                                                        |
+| BKM-eksempel for poliklinikk                             |                                                        |
 
----
-
-## OpenAPI-spesifikasjon
-
-*(lenke kommer)*
 
 ---
 
