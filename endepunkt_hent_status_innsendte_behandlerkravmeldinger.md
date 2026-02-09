@@ -67,8 +67,18 @@ Et vedtak og en utbetaling kan gjelde flere krav. Hvis det blir sendt inn flere 
 Brukes når man henter **alle innsendte behandlerkravmeldinger** 
 
 ```http
-GET /kuhr/krav/v1/data/behandlerkravmelding
+GET /kuhr/krav/v1/data/behandlerkravmelding?fomMottattdato=<dato>&tomMottattdato=<dato>
 ```
+
+Query parametere
+
+| Felt                          | Beskrivelse                                                                     |                     
+| ----------------------------- |---------------------------------------------------------------------------------|
+| fomMottattdato | Optional fra og med mottattdato for filtrering av resultatet. Format yyyy-MM-dd |
+| tomMottattdato | Optional til og med mottattdato for filtrering av resultatet. Format yyyy-MM-dd                  |
+
+
+Response
 
 | Felt                          | Type     | Beskrivelse                                                            |
 | ----------------------------- | -------- |------------------------------------------------------------------------|

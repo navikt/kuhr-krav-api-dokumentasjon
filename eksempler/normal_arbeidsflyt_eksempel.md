@@ -120,7 +120,7 @@ Responsen er normalt mottatt status og en behandlerkravmeldingId som kan brukes 
 ### Request
 
 ```http
-POST /kuhr/krav/v1/data/behandlerkravmelding
+POST /kuhr/krav/v1/process/sendinnbehandlerkravmelding
 ```
 
 ```json
@@ -325,7 +325,7 @@ Dette gjøres ved å kalle endepunktet [Send inn behandlerkrav](../endepunkt_sen
 ### Request
 
 ```http
-POST /kuhr/krav/v1/data/behandlerkravmelding
+POST /kuhr/krav/v1/process/sendinnbehandlerkravmelding
 ```
 
 ```json
@@ -430,10 +430,12 @@ Etter at en eller flere meldinger er sendt inn til KUHR kan man følge opp den v
 
 Dette gjøres ved å kalle endepunktet [Hent status for innsendte krav](../endepunkt_hent_status_innsendte_behandlerkravmeldinger.md).
 
+Her oppgis query parameter for fra og med dato for å bare ta med meldinger som er sendt inn i 2026 i oversikten.
+
 ### Request
 
 ```http
-GET /kuhr/krav/v1/data/behandlerkravmelding
+GET /kuhr/krav/v1/data/behandlerkravmelding?fomMottattdato=2026-01-01
 ```
 
 ### Response (200 OK)
@@ -476,10 +478,12 @@ Klokka 16 hver virkedag vil innsendte krav for en helseaktør samles opp og bli 
 
 Dette gjøres ved å kalle endepunktet [Hent status for innsendte krav](../endepunkt_hent_status_innsendte_behandlerkravmeldinger.md).
 
+Her oppgis query parameter for fra og med dato for å bare ta med meldinger som er sendt inn i 2026 i oversikten.
+
 ### Request
 
 ```http
-GET /kuhr/krav/v1/data/behandlerkravmelding
+GET /kuhr/krav/v1/data/behandlerkravmelding?fomMottattdato=2026-01-01
 ```
 
 ### Response (200 OK)

@@ -1,3 +1,11 @@
+## 2026-02-09
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Query parametere fomMottattdato og tomMottattdato på henting av oversikt
+
+normal_arbeidsflyt_eksempel.md
+- Rettet opp i path feil
+- Lagt til query parameter bruk
+
 ## 2026-02-06
 README.md
 - Lagt til at krav fra andre kanaler er tilgjengelig i APIet
