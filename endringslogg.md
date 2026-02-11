@@ -1,3 +1,13 @@
+## 2026-02-11
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Lagt til beskrivelse av rebehandlingsprosessen i KUHR
+- Nytt felt rebehandling, brukes når en melding har blitt behandlet flere ganger i KUHR
+- Hente detaljer for ett krav nå returner et objekt med en liste av meldinger
+
+normal_arbeidsflyt_eksempel.md
+- Oppdatert eksempler med lister for behandlerkravmeldinger
+
+
 ## 2026-02-09
 endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
 - Query parametere fomMottattdato og tomMottattdato på henting av oversikt

@@ -248,59 +248,63 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/5138fbfe-3c9c-406f-b854-91177b00bb1a
 
 ```json
 {
-  "behandlerkravmeldingId": "5138fbfe-3c9c-406f-b854-91177b00bb1a",
-  "meldingsstatus": "ferdig_behandlet",
-  "kontrollstatus": "ferdig_kontrollert",
-  "utbetalingsstatus": "ikke_sendt_til_utbetaling",
-  "innsendingId": "100001812531977",
-  "vedtakId": null,
-  "praksisId": "1004326178",
-  "mottattidspunkt": "2026-01-06T15:30:29+01:00",
-  "sumKravbelop": 434,
-  "sumUtbetaltbelop": null,
-  "antallRegninger": 3,
-  "innsending": {
-    "regninger": [
-      {
-        "status": "avvist",
-        "guid": "f0bcd358-0676-49c7-94f8-c055c4b21332",
-        "regningsnummer": "4",
-        "merknader": [
+  "behandlerkravmeldinger": [
+    {
+      "behandlerkravmeldingId": "5138fbfe-3c9c-406f-b854-91177b00bb1a",
+      "meldingsstatus": "ferdig_behandlet",
+      "kontrollstatus": "ferdig_kontrollert",
+      "utbetalingsstatus": "ikke_sendt_til_utbetaling",
+      "innsendingId": "100001812531977",
+      "vedtakId": null,
+      "praksisId": "1004326178",
+      "mottattidspunkt": "2026-01-06T15:30:29+01:00",
+      "sumKravbelop": 434,
+      "sumUtbetaltbelop": null,
+      "antallRegninger": 3,
+      "innsending": {
+        "regninger": [
           {
-            "nummer": 470,
-            "tekst": "Takst 1bd/1be/1bk for enkel pasientkontakt, forespørsel, rådgivning ved papirbrev eller telefon står som ugyldig kombinasjon med alle takster. Her er takst 1bd/1bk skrevet på ny regning, og brukt 60 minutter før/etter konsultasjonstakst på regningsnummer 5. Refusjonskrav for takst 1bd/1bk er avslått under forutsetning av at taksten er brukt i forbindelse med konsultasjon."
+            "status": "avvist",
+            "guid": "f0bcd358-0676-49c7-94f8-c055c4b21332",
+            "regningsnummer": "4",
+            "merknader": [
+              {
+                "nummer": 470,
+                "tekst": "Takst 1bd/1be/1bk for enkel pasientkontakt, forespørsel, rådgivning ved papirbrev eller telefon står som ugyldig kombinasjon med alle takster. Her er takst 1bd/1bk skrevet på ny regning, og brukt 60 minutter før/etter konsultasjonstakst på regningsnummer 5. Refusjonskrav for takst 1bd/1bk er avslått under forutsetning av at taksten er brukt i forbindelse med konsultasjon."
+              }
+            ]
+          },
+          {
+            "status": "godkjent",
+            "guid": "b7184d58-0ed4-4277-a60c-720b1daf69f7",
+            "regningsnummer": "5",
+            "merknader": []
+          },
+          {
+            "status": "avvist",
+            "guid": "32b24c0b-facd-4f5e-aff9-9849ae477db5",
+            "regningsnummer": "6",
+            "merknader": [
+              {
+                "nummer": 766,
+                "tekst": "Enkeltregning er datert frem i tid, oppgitt konsultasjonstid er 06.02.2026 15:00, innsending er mottatt 06.01.2026 15:30"
+              }
+            ]
           }
-        ]
-      },
-      {
-        "status": "godkjent",
-        "guid": "b7184d58-0ed4-4277-a60c-720b1daf69f7",
-        "regningsnummer": "5",
+        ],
         "merknader": []
       },
-      {
-        "status": "avvist",
-        "guid": "32b24c0b-facd-4f5e-aff9-9849ae477db5",
-        "regningsnummer": "6",
-        "merknader": [
-          {
-            "nummer": 766,
-            "tekst": "Enkeltregning er datert frem i tid, oppgitt konsultasjonstid er 06.02.2026 15:00, innsending er mottatt 06.01.2026 15:30"
-          }
-        ]
+      "vedtak": {
+        "utbetaling": {
+          "belop": null,
+          "utbetaltdato": null,
+          "kontonr": null,
+          "kid": null
+        },
+        "merknader": []
       }
-    ],
-    "merknader": []
-  },
-  "vedtak": {
-    "utbetaling": {
-      "belop": null,
-      "utbetaltdato": null,
-      "kontonr": null,
-      "kid": null
-    },
-    "merknader": []
-  }
+    }
+  ]
 }
 
 ```
@@ -390,38 +394,43 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/f00ddf25-f4f1-49b7-acd7-88cf4cbf9c71
 ### Response (200 OK)
 
 ```json
+
 {
-  "behandlerkravmeldingId": "f00ddf25-f4f1-49b7-acd7-88cf4cbf9c71",
-  "meldingsstatus": "ferdig_behandlet",
-  "kontrollstatus": "ferdig_kontrollert",
-  "utbetalingsstatus": "ikke_sendt_til_utbetaling",
-  "innsendingId": "100001812532014",
-  "vedtakId": null,
-  "praksisId": "1004326178",
-  "mottattidspunkt": "2026-01-06T15:45:57+01:00",
-  "sumKravbelop": 64,
-  "sumUtbetaltbelop": null,
-  "antallRegninger": 1,
-  "innsending": {
-    "regninger": [
-      {
-        "status": "godkjent",
-        "guid": "32b24c0b-facd-4f5e-aff9-9849ae477db5",
-        "regningsnummer": "6",
+  "behandlerkravmeldinger": [
+    {
+      "behandlerkravmeldingId": "f00ddf25-f4f1-49b7-acd7-88cf4cbf9c71",
+      "meldingsstatus": "ferdig_behandlet",
+      "kontrollstatus": "ferdig_kontrollert",
+      "utbetalingsstatus": "ikke_sendt_til_utbetaling",
+      "innsendingId": "100001812532014",
+      "vedtakId": null,
+      "praksisId": "1004326178",
+      "mottattidspunkt": "2026-01-06T15:45:57+01:00",
+      "sumKravbelop": 64,
+      "sumUtbetaltbelop": null,
+      "antallRegninger": 1,
+      "innsending": {
+        "regninger": [
+          {
+            "status": "godkjent",
+            "guid": "32b24c0b-facd-4f5e-aff9-9849ae477db5",
+            "regningsnummer": "6",
+            "merknader": []
+          }
+        ],
+        "merknader": []
+      },
+      "vedtak": {
+        "utbetaling": {
+          "belop": null,
+          "utbetaltdato": null,
+          "kontonr": null,
+          "kid": null
+        },
         "merknader": []
       }
-    ],
-    "merknader": []
-  },
-  "vedtak": {
-    "utbetaling": {
-      "belop": null,
-      "utbetaltdato": null,
-      "kontonr": null,
-      "kid": null
-    },
-    "merknader": []
-  }
+    }
+  ]
 }
 ```
 

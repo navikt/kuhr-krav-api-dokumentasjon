@@ -59,6 +59,12 @@ Et vedtak og en utbetaling kan gjelde flere krav. Hvis det blir sendt inn flere 
 | `utbetalt`                  | Utbetalingen er gjennomført.      |
 | `ingen_utbetaling`          | Ingen utbetaling skal foretas.    |
 
+
+### **rebehandling**
+Rebehandling av en melding skjer når det har oppstått en feil i kontrollen og det blir gjort en retting i KUHR og kontrollen kjøres på nytt. Det er da ikke nødvendig å sende inn kravet på nytt, men det vil være et nytt kontroll resultat på noen av regningene i kravet. Når det er gjort en rebehandling kommer dette som en egen rad i oversikten og detaljene. Denne vil ha feltet rebehandling=true. 
+
+Dette er noe som skjer veldig sjelden og alltid være involvere manuelle prosesser og oppfølging. Det er likevel viktig at systemene har en grunnleggende håndtering når dette skjer. 
+
 ---
 
 
@@ -81,19 +87,20 @@ Query parametere
 Response
 
 | Felt                          | Type     | Beskrivelse                                                            |
-| ----------------------------- | -------- |------------------------------------------------------------------------|
+|-------------------------------| -------- |------------------------------------------------------------------------|
 | **behandlerkravmeldinger**    | Array    | Liste over innsendte behandlerkravmeldinger.                           |
-| └─ **behandlerkravmeldingId** | String   | Unik identifikator (GUID) for meldingen.                               |
-| └─ **meldingsstatus**         | String   | Teknisk status for meldingen.                                          |
-| └─ **kontrollstatus**         | String   | Status for kontroll                                                    |
-| └─ **utbetalingsstatus**      | String   | Status for utbetaling                                                  |
-| └─ **innsendingId**           | String   | ID for innsendingen                                                    |
-| └─ **vedtakId**               | String   | ID for vedtaket. Et vedtak og en utbetaling kan gjelde flere krav.     |
-| └─ **praksisId**              | String   | ID til praksisen som har sendt kravet.                                 |
-| └─ **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`). |
-| └─ **sumKravbelop**           | Number   | Samlet kravbeløp                                                       |
-| └─ **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                  |
-| └─ **antallRegninger**        | Integer  | Antall regninger i kravet                                              |
+| **behandlerkravmeldingId** | String   | Unik identifikator (GUID) for meldingen.                               |
+| **meldingsstatus**         | String   | Teknisk status for meldingen.                                          |
+| **kontrollstatus**         | String   | Status for kontroll                                                    |
+| **utbetalingsstatus**      | String   | Status for utbetaling                                                  |
+| **innsendingId**           | String   | ID for innsendingen                                                    |
+| **rebehandling**           | boolean  | Flagg som angir om dette er en rebehandling av en melding              |
+| **vedtakId**               | String   | ID for vedtaket. Et vedtak og en utbetaling kan gjelde flere krav.     |
+| **praksisId**              | String   | ID til praksisen som har sendt kravet.                                 |
+| **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`). |
+| **sumKravbelop**           | Number   | Samlet kravbeløp                                                       |
+| **sumUtbetaltbelop**       | Number   | Samlet utbetalt beløp                                                  |
+| **antallRegninger**        | Integer  | Antall regninger i kravet                                              |
 
 ---
 
@@ -106,13 +113,15 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/<behandlerkravmeldingId>
 ```
 
 | Felt                       | Type     | Beskrivelse                                                            |
-| -------------------------- | -------- |------------------------------------------------------------------------|
+|----------------------------|----------|------------------------------------------------------------------------|
+| **behandlerkravmeldinger**  | Array    | Liste over innsendte behandlerkravmeldinger.                           |
 | **behandlerkravmeldingId** | String   | Unik identifikator (GUID) for meldingen.                               |
 | **meldingsstatus**         | String   | Teknisk status for meldingen.                                          |
 | **kontrollstatus**         | String   | Status for kontroll.                                                   |
 | **utbetalingsstatus**      | String   | Status for utbetaling.                                                 |
 | **innsendingId**           | String   | ID for innsendingen                                                    |
-| **vedtakId**               | String   | ID for vedtaket. Et vedtak og en utbetaling kan gjelde flere krav.                                                    |
+| **rebehandling**           | boolean  | Flagg som angir om dette er en rebehandling av en melding              |
+| **vedtakId**               | String   | ID for vedtaket. Et vedtak og en utbetaling kan gjelde flere krav.     |
 | **praksisId**              | String   | ID til praksisen som har sendt kravet.                                 |
 | **mottattidspunkt**        | DateTime | Tidspunkt for når meldingen ble mottatt (`YYYY-MM-DDTHH:mm:ss±hh:mm`). |
 | **sumKravbelop**           | Number   | Samlet kravbeløp                                                       |
@@ -192,58 +201,62 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/3f5cb512-d274-4c93-90af-437391c4294a
 
 ```json
 {
-  "behandlerkravmeldingId": "3f5cb512-d274-4c93-90af-437391c4294a",
-  "meldingsstatus": "sendt_til_behandling",
-  "kontrollstatus": "ferdig_kontrollert",
-  "utbetalingsstatus": "ingen_utbetaling",
-  "innsendingId": "100001811800023",
-  "vedtakId": "100001811802344",
-  "praksisId": "1004326178",
-  "mottattidspunkt": "2025-07-16T11:20:00+02:00",
-  "innsending": {
-    "sumKravbelop": 396,
-    "sumUtbetaltbelop": 198,
-    "antallRegninger": 2,
-    "regninger": [
-      {
-        "status": "avvist",
-        "guid": "af49247c-09fc-4654-98e4-7d0e7affb4a6",
-        "regningsnummer": "6897",
+  "behandlerkravmeldinger": [
+    {
+      "behandlerkravmeldingId": "3f5cb512-d274-4c93-90af-437391c4294a",
+      "meldingsstatus": "sendt_til_behandling",
+      "kontrollstatus": "ferdig_kontrollert",
+      "utbetalingsstatus": "ingen_utbetaling",
+      "innsendingId": "100001811800023",
+      "vedtakId": "100001811802344",
+      "praksisId": "1004326178",
+      "mottattidspunkt": "2025-07-16T11:20:00+02:00",
+      "innsending": {
+        "sumKravbelop": 396,
+        "sumUtbetaltbelop": 198,
+        "antallRegninger": 2,
+        "regninger": [
+          {
+            "status": "avvist",
+            "guid": "af49247c-09fc-4654-98e4-7d0e7affb4a6",
+            "regningsnummer": "6897",
+            "merknader": [
+              {
+                "nummer": "710",
+                "tekst": "Samhandler har registrert at pasienten har frikort. Frikortvedtak er ikke registrert i frikortregisteret. Fra 1. april 2011 vil slike regninger bli automatisk avvist."
+              }
+            ]
+          },
+          {
+            "status": "godkjent",
+            "guid": "6f444575-5bdb-43ff-919b-c20cd0d4fa69",
+            "regningsnummer": "6898",
+            "merknader": []
+          }
+        ],
         "merknader": [
           {
-            "nummer": "710",
-            "tekst": "Samhandler har registrert at pasienten har frikort. Frikortvedtak er ikke registrert i frikortregisteret. Fra 1. april 2011 vil slike regninger bli automatisk avvist."
+            "nummer": "458",
+            "tekst": "For behandling som kommer inn under frikort for helsetjenester, skal egenandelene rapporteres til Helfo minst hver 14. dag. Helfo anbefaler innsending via Helsenettet, ta kontakt med din EPJ-leverandør for oppkobling. Har du unntak fra å levere via Helsenettet, kan du bruke opplastningstjenesten i tjenesteportal for helseaktør https://internett-portal.helsedirektoratet.no"
           }
         ]
       },
-      {
-        "status": "godkjent",
-        "guid": "6f444575-5bdb-43ff-919b-c20cd0d4fa69",
-        "regningsnummer": "6898",
-        "merknader": []
+      "vedtak": {
+        "utbetaling": {
+          "belop": 198,
+          "utbetaltdato": "2025-07-20T08:30:00+02:00",
+          "kontonr": "12345678901",
+          "kid": "123456789"
+        },
+        "merknader": [
+          {
+            "nummer": "1478",
+            "tekst": "1. januar 2021 ble de to frikort-ordningene for helsetjenester slått sammen til én ordning, med ett felles egenandelstak. Du må rapportere senest 14 dager etter behandlingen, for å unngå at frikortet til pasientene blir forsinket. Ved å se på din oversikt over takstbruk øverst på side 2 i dette vedtaket, vil du se snittalderen på dine regninger med egenandeler. Snittalderen bør være en god del lavere enn 14 dager, fordi du ved innsendingen hver 14. dag rapporterer inn egenandeler som er fra 0 til 14 dager gamle."
+          }
+        ]
       }
-    ],
-    "merknader": [
-      {
-        "nummer": "458",
-        "tekst": "For behandling som kommer inn under frikort for helsetjenester, skal egenandelene rapporteres til Helfo minst hver 14. dag. Helfo anbefaler innsending via Helsenettet, ta kontakt med din EPJ-leverandør for oppkobling. Har du unntak fra å levere via Helsenettet, kan du bruke opplastningstjenesten i tjenesteportal for helseaktør https://internett-portal.helsedirektoratet.no"
-      }
-    ]
-  },
-  "vedtak": {
-    "utbetaling": {
-      "belop": 198,
-      "utbetaltdato": "2025-07-20T08:30:00+02:00",
-      "kontonr": "12345678901",
-      "kid": "123456789"
-    },
-    "merknader": [
-      {
-        "nummer": "1478",
-        "tekst": "1. januar 2021 ble de to frikort-ordningene for helsetjenester slått sammen til én ordning, med ett felles egenandelstak. Du må rapportere senest 14 dager etter behandlingen, for å unngå at frikortet til pasientene blir forsinket. Ved å se på din oversikt over takstbruk øverst på side 2 i dette vedtaket, vil du se snittalderen på dine regninger med egenandeler. Snittalderen bør være en god del lavere enn 14 dager, fordi du ved innsendingen hver 14. dag rapporterer inn egenandeler som er fra 0 til 14 dager gamle."
-      }
-    ]
-  }
+    }
+  ]
 }
 ```
 
