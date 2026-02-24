@@ -1,3 +1,11 @@
+## 2026-02-24
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Tydeliggjort at det kan være flere innslag for kontroll og utbetaling når det er en rebehandling
+
+behandlerkravmelding_json.md
+- Endret oppsett av dokumentasjonen
+- Lagt inn NPR meldingen i BKM
+
 ## 2026-02-11
 endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
 - Lagt til beskrivelse av rebehandlingsprosessen i KUHR

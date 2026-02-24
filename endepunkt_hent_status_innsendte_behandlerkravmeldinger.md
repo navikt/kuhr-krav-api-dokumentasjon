@@ -106,7 +106,7 @@ Response
 
 ## Response – detaljer for ett krav
 
-Brukes når man henter **detaljer for et spesifikt krav**.
+Brukes når man henter **detaljer for et spesifikt krav**. Det returneres en liste av behandlerkravmeldinger med detaljer for resultatet av kontrollen og utbetalingen. Normalt vil listen bare ha ett innslag, men ved rebehandling vil det bli flere innslag for en melding. Der hver har sitt eget kontroll resultat og utbetaling. Feltet **rebehandling** angir om det er et resultat av rebehandling. 
 
 ```http
 GET /kuhr/krav/v1/data/behandlerkravmelding/<behandlerkravmeldingId>
