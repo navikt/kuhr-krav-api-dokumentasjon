@@ -170,7 +170,7 @@ poliklinikker og for behandlingsreiser i utlandet.
 
 #### antallRegninger
 
-Samlet antall innsendte regninger.
+Samlet antall innsendte regninger. 
 
 ----
 
