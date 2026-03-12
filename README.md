@@ -98,10 +98,12 @@ API-tilgangen kan delegeres videre til en leverandør gjennom Altinn.
 
 ---
 
-### HelseID (behandlere)
+### HelseID (behandlere og virksomheter)
 
 Behandlere som fremsetter krav personlig bruker **HelseID** til autentisering og autorisasjon. Det betyr at EPJen må tilby sluttbruker pålogging med HelseID.
 Behandleren må være registrert hos Helfo med gyldig avtale og praksis.
+
+Det er også mulig å bruke HelseID maskin til maskin for virksomheter som alternativ til Maskinporten. Det krever at virksomheten er registrert i HelseID og at det settes opp en klient for maskin-til-maskin-autentisering. Det støttes ikke delegering i HelseID, så det må opprettes en klient for hver virksomhet som skal bruke API-et.
 
 Mer informasjon:
 [HelseID – NHN utviklerportal](https://utviklerportal.nhn.no/informasjonstjenester/helseid/)

@@ -1,3 +1,13 @@
+## 2026-03-12
+behandlerkravmelding_json.md
+- Lag til felt eea.utstedelsesdato
+- Endret stor bokstav på felter først for eea
+- Fjernet eea fra felt navn
+
+README.md
+- Lagt til at det støttes bruk av HelseID for virksomheter også
+
+
 ## 2026-02-24
 endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
 - Tydeliggjort at det kan være flere innslag for kontroll og utbetaling når det er en rebehandling

@@ -29,13 +29,13 @@
           },
           "fodselsdato": "2014-03-11",
           "eea": {
-            "Dok": "",
-            "CardId": "",
+            "dok": "",
+            "cardId": "",
             "Id": "",
-            "TrygdekontorNavn": "",
-            "TrygdekontorNr": "",
-            "eeaGyldighetFra": "",
-            "eeaGyldighet": "",
+            "trygdekontorNavn": "",
+            "trygdekontorNr": "",
+            "gyldighetFra": "",
+            "gyldighet": "",
             "utstedelsesdato": ""
           }
         },
@@ -170,7 +170,7 @@ poliklinikker og for behandlingsreiser i utlandet.
 
 #### antallRegninger
 
-Samlet antall innsendte regninger. 
+Samlet antall innsendte regninger.
 
 ----
 
@@ -395,13 +395,13 @@ Samlet krav for innsendte regninger.
   },
   "fodselsdato": "2014-03-11",
   "eea": {
-    "Dok": "",
-    "CardId": "",
-    "Id": "",
-    "TrygdekontorNavn": "",
-    "TrygdekontorNr": "",
-    "eeaGyldighetFra": "",
-    "eeaGyldighet": "",
+    "dok": "",
+    "cardId": "",
+    "id": "",
+    "trygdekontorNavn": "",
+    "trygdekontorNr": "",
+    "gyldighetFra": "",
+    "gyldighet": "",
     "utstedelsesdato": ""
   }
 }
@@ -478,13 +478,14 @@ Angis på formatet ÅÅÅÅ-MM-DD (1982-03-30).
 
 ```json
 {
-  "Dok": "",
-  "CardId": "",
-  "Id": "",
-  "TrygdekontorNavn": "",
-  "TrygdekontorNr": "",
-  "eeaGyldighetFra": "",
-  "eeaGyldighet": ""
+  "dok": "",
+  "cardId": "",
+  "id": "",
+  "trygdekontorNavn": "",
+  "trygdekontorNr": "",
+  "gyldighetFra": "",
+  "gyldighet": "",
+  "utstedelsesdato": ""
 }
 ```
 
