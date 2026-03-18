@@ -1,3 +1,7 @@
+## 2026-03-18
+README.md
+- Lagt til base URL for produksjon
+
 ## 2026-03-12
 behandlerkravmelding_json.md
 - Lag til felt eea.utstedelsesdato
