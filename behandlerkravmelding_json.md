@@ -1,6 +1,7 @@
 # Behandlerkravmelding JSON
 
 ## Eksempel med alle felter
+(Eksempelet er ikke ment å være et gyldig krav, men skal vise hvordan alle felter kan benyttes. Det er derfor ikke alle kombinasjoner av felter som er gyldige i eksempelet.)
 
 ```json
 {
@@ -15,6 +16,7 @@
         "korrigeringBetaltEgenandel": false,
         "betaltEgenandel": false,
         "kreditering": false,
+        "debitor": "1",
         "regningsnummer": "12496",
         "tidspunkt": "2014-05-17T11:20:00+02:00",
         "merknad": "",
@@ -62,8 +64,11 @@
           }
         },
         "utforendeBehandler": {
-          "id": "14057012345",
-          "type": "FNR"
+          "identifikasjon": {
+            "id": "14057012345",
+            "type": "FNR"
+          },
+          "type": "1"
         },
         "relatertBehandler": {
           "id": "70008786",
@@ -88,6 +93,13 @@
                 "tannkode": "34I"
               }
             ]
+          }
+        ],
+        "nlkkoder": [
+          {
+            "belop": 10.03,
+            "kode": "NOR05172",
+            "antall": 1
           }
         ],
         "prosedyrekoder": [
@@ -190,6 +202,7 @@ Enkeltregning for en behandling. Et behandlerkrav kan inneholde mange enkeltregn
   "korrigeringBetaltEgenandel": false,
   "betaltEgenandel": false,
   "kreditering": false,
+  "debitor": "1",
   "regningsnummer": "12496",
   "tidspunkt": "2014-05-17T11:20:00+02:00",
   "merknad": "",
@@ -199,8 +212,11 @@ Enkeltregning for en behandling. Et behandlerkrav kan inneholde mange enkeltregn
   "sjeldenMedisinskTilstand": "FAB",
   "henvisning": {},
   "utforendeBehandler": {
-    "id": "14057012345",
-    "type": "FNR"
+    "identifikasjon": {
+      "id": "14057012345",
+      "type": "FNR"
+    },
+    "type": "1"
   },
   "relatertBehandler": {
     "id": "70008786",
@@ -213,6 +229,7 @@ Enkeltregning for en behandling. Et behandlerkrav kan inneholde mange enkeltregn
   "moderasjonskode": "S",
   "stonadspunkt": "4h",
   "takster": [],
+  "nlkkoder": [],
   "prosedyrekoder": [],
   "norpatkoder": [],
   "ncrpkoder": [],
@@ -269,6 +286,12 @@ enn 3 år. Hvis krediteringen er godkjent vil den opprinnelige regning få statu
 denne regningen vil komme til fradrag ved neste utbetaling. Etter at krediteringsregning er godkjent kan korrigert
 regning sendes inn. Beløp på en krediteringsregning bør angis som et minusbeløp og minusbeløpet bør også tas hensyn til
 i SumKravSamlet.
+
+----
+
+##### debitor
+
+https://finnkode.helsedirektoratet.no/adm/collections/8426
 
 ----
 
@@ -339,6 +362,8 @@ Behandlerident oppgis på alle regninger. Det er ønskelig at HPR-nummer til leg
 fra helsestasjon. Der tannlegekrav sender inn på vegne av en institusjon (UIO, UIB etc.) og hvor behandlingen er utført
 av ulike tannleger kan Behandlerident brukes for å angi hvem som har utført behandlingen.
 
+For type brukes kodeverket https://finnkode.helsedirektoratet.no/adm/collections/8401
+
 ----
 
 ##### relatertBehandler
@@ -350,6 +375,17 @@ oppgis.
 ----
 
 ##### rekvirent
+
+```json
+{
+  "rekvirent": {
+    "organisasjon": "9988991",
+    "hprNr": "70008786"
+  }
+}
+```       
+
+
 
 ----
 
@@ -652,6 +688,25 @@ Eksempel på kode:
 
 Kodeverk:
 ISO 3950 - 1995
+
+----
+
+##### nlkkoder
+
+```json
+
+{
+  "belop": 10.03,
+  "kode": "NOR05172",
+  "antall": 1
+}
+
+```
+
+https://opne-data.helserefusjon.no/nlkkoder
+
+https://opne-data.helserefusjon.no/refusjonskategorier
+
 
 ----
 

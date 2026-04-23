@@ -1,3 +1,10 @@
+## 2026-04-23
+behandlerkravmelding_json.md
+- Lagt til flere felter fra NPR meldingen
+
+testdata.md
+- Lagt til informasjon om autentisering i testmiljøet
+
 ## 2026-03-18
 README.md
 - Lagt til base URL for produksjon
