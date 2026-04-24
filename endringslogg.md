@@ -1,3 +1,6 @@
+## 2026-04-24
+Fjernet endepunkt_hent_pasientensoppmoter.md, det er ikke relevant for andre enn Pasientreiser og det er ikke en del av krav-APIet
+
 ## 2026-04-23
 behandlerkravmelding_json.md
 - Lagt til flere felter fra NPR meldingen
