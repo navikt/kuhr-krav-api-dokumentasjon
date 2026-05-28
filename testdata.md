@@ -10,6 +10,8 @@ https://www.nhn.no/tjenester/syntpop
 Logg på Tjenesteportalen for helseaktører og registrer praksisinformasjon.
 https://praksisinformasjon.test.helsedirektoratet.no/
 
+Organisasjonen som registreres på en praksis må være registrert i testdatasettet til Tenor eller det 'ekte' Enhetsregisteret. Det finnes organisasjoner som ligger i Adresseregisteret som ikke ligger i Enhetsregisteret, og disse kan ikke brukes i testmiljøet. 
+
 
 ## Registrering av praksis for virksomhet
 

@@ -1,3 +1,17 @@
+## 2026-05-28
+testdata.md
+- Lagt krav om registrering av organisasjon i testdatasettet til Tenor eller det 'ekte' Enhetsregisteret for å kunne bruke den i testmiljøet
+
+endepunkt_send_inn_behandlerkravmelding.md
+- Lagt til at det gis HTTP 200 på duplikate meldinger
+- Rettet feil navn i dokumentasjonen på felt for tilbakemeldinger i responsen, fra feilmeldinger til tilbakemelding
+- Lagt til ekempel på duplikat melding
+
+endpunkt_hent_registrerte_praksiser.md
+- Lagt til forklaring av at det må gjøres et valg av praksis fra en liste
+
+
+
 ## 2026-04-24
 Fjernet endepunkt_hent_pasientensoppmoter.md, det er ikke relevant for andre enn Pasientreiser og det er ikke en del av krav-APIet
 

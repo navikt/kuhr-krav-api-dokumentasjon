@@ -14,6 +14,8 @@ Dette brukes for å velge riktig **praksisId** ved innsending av krav.
 For å sende inn en behandlerkrav til KUHR må det finnes en registrert praksis.
 **PraksisId** må oppgis når meldingen sendes inn.
 
+Listen over praksiser inneholder alle praksiser som er registrert på helseaktøren, uavhengig av hvor de er pålogget. Det vil si at hvis en helseaktør arbeider flere steder og har flere praksiser, vil alle disse være synlige i listen og systemet eller brukeren må velge riktig praksis før innsending av krav. For å gjøre praksisvalget enklere, kan man filtere listen på type eller orgnr. Valget kan også gjøres på forhånd og gjenbrukes ved innsending av krav.
+
 ---
 
 ##  Response

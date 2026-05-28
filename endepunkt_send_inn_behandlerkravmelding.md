@@ -23,16 +23,16 @@ Dersom meldingen ikke oppfyller kravene, returneres en GUID, koder og tilbakemel
 ## Response
 
 | Felt                       | Type   | Beskrivelse                                                    |
-| -------------------------- | ------ | -------------------------------------------------------------- |
+| -------------------------- | ------ |----------------------------------------------------------------|
 | **behandlerkravmeldingId** | String | Unik identifikator (GUID) for meldingen.                       |
 | **status**                 | String | Status for meldingen, f.eks. `mottatt` eller `feil_i_melding`. |
-| **feilmeldinger**         | Array  | (Kun ved feil) Liste med feilmeldinger.                        |
+| **tilbakemelding**         | Array  | Liste med tilbakemeldinger.                                    |
 | └─ **kode**          | String | Kontrollkode som identifiserer hvilken validering som feilet.  |
-| └─ **melding**             | String | Beskrivende tekst, med spesifikk detaljer om feilen.                         |
+| └─ **melding**             | String | Beskrivende tekst, med spesifikk detaljer om feilen.           |
 
 ---
 
-## Feilmeldingskoder
+## Tilbakemeldingkoder
 
 Ved innsending gjøres følgende kontroller:
 
@@ -42,6 +42,8 @@ Ved innsending gjøres følgende kontroller:
 * **Duplikatkontroll** – meldingen er ikke allerede sendt inn og lagret.
 
 Ved feil gis det en status = `feil_i_melding` og HTTP 400, med en eller flere feilmeldinger i responsen
+
+Ved duplikate meldinger returneres HTTP 200, med status = `mottatt`, behandlerkravmeldingId for den opprinnelige meldingen og en tilbakemelding med kode `DUPLIKAT_KRAV` i responsen. Det er ikke nødvendig å gjøre noe for å rette opp i duplikate meldinger, da de allerede er behandlet. Det er heller ikke mulig å få duplikatfeil ved å sende inn samme melding flere ganger, da det kun er den første som lagres og behandles.
 
 | Kode                                   | Beskrivelse                                                              |
 | -------------------------------------- |--------------------------------------------------------------------------|
@@ -53,6 +55,8 @@ Ved feil gis det en status = `feil_i_melding` og HTTP 400, med en eller flere fe
 | MANGLER_GUID                  | Mangler påkrevd felt `guid`                                              |
 | UKJENT_PRAKSISID    | Oppgitt `praksisId` finnes ikke for helseaktøren                         |
 | DUPLIKAT_KRAV           | Meldingen er identisk med en tidligere melding som allerede er behandlet |
+
+
 
 ---
 
@@ -122,7 +126,7 @@ POST /kuhr/krav/v1/process/sendinnbehandlerkravmelding
 {
   "behandlerkravmeldingId": "9101aba1-d5a2-410f-8ab8-22da30dca5db",
   "status": "feil_i_melding",
-  "feilmeldinger": [
+  "tilbakemelding": [
     {
       "kode": "MANGLER_BEHANDLERKRAV",
       "melding": "Mangler påkrevd felt behandlerkrav"
@@ -247,3 +251,55 @@ POST /kuhr/krav/v1/process/sendinnbehandlerkravmelding
   "status": "mottatt"
 }
 ```
+
+---
+
+### Eksempel 4 – duplikat melding
+
+**Request**
+
+```http
+POST /kuhr/krav/v1/process/sendinnbehandlerkravmelding
+```
+
+```json
+{
+  "praksisId": "1000005649",
+  "behandlerkrav": {
+    "regninger": [
+      {
+        "guid": "0b8dc559-6c2d-419b-aeef-faaf537c6117",
+        "regningsnummer": "12496",
+        "tidspunkt": "2014-05-17T11:20:00+02:00",
+        "pasient": {
+          "identifikasjon": {
+            "id": "14057012345",
+            "type": "FNR"
+          }
+        },
+        "arsakFriEgenandel": "F",
+        "belop": 435.00
+      }
+    ],
+    "antallRegninger": 1,
+    "belop": 435.00
+  }
+}
+```
+
+**Response (200 OK)**
+
+```json
+{
+  "behandlerkravmeldingId": "9101aba1-d5a2-410f-8ab8-22da30dca5db",
+  "status": "mottatt",
+  "tilbakemelding": [
+    {
+      "kontrollNr": "DUPLIKAT_KRAV",
+      "melding": "Meldingen er identisk med en tidligere melding som allerede er behandlet"
+    }
+  ]
+}
+```
+
+
