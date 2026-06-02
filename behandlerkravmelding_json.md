@@ -525,6 +525,94 @@ Angis på formatet ÅÅÅÅ-MM-DD (1982-03-30).
 }
 ```
 
+Angir nødvendig dokumentasjon fra enten EØS-land eller annet konvensjonsland.
+
+Norge har inngått gjensidige trygdeavtaler (konvensjoner) med enkelte land om helsehjelp til disse lands statsborgere, eventuelt personer som er bosatt/trygdet i disse land. Avtalene gjelder i hovedsak helsehjelp det oppstår behov for mens personen oppholder seg i Norge. Det er en forutsetning for å få refusjon fra trygden, at avtalen omfatter helsehjelp og at pasienten omfattes av trygdeordningen for helsehjelp i avtalelandet.
+Pasienter som er stønadsberettiget i henhold til gjensidighetsavtale med annen stat, har de samme rettigheter til stønad til medisinsk behandling i Norge som norske medlemmer dvs. at de kun skal betale vanlig egenandel/egenbetaling. Pasienten må dokumentere denne retten ved å fremvise rettighetsdokumentasjon.  
+For disse pasientene skal det foretas et etteroppgjør mellom Norge og aktuelt land og dermed må diverse informasjon om pasienten og fremvist rettighetsdokumentasjon oppgis i oppgjørsmeldingen.
+
+Pasienter fra andre EØS-land og Storbritannia
+Hvis pasienten kommer fra et EØS-land (landkode = AT, BE, BG, CY, CZ, DE,  EE, ES,  FR,  GR, HU, HR, IE,  IT, LI, LT, LU, LV, MT, NL, PL, PT, RO,  SI, SK)  skal i utgangspunktet EØS-dokumentasjon oppgis.
+Hvis pasienten er fra et EØS-land vil det normale være at pasienten har med et Helsetrygdkort (EuropeanHealthInsuranceCard - EHIC) og at informasjonen som står på dette kortet må registreres på regningen til Helfo. Dette betyr for eksempel at for turister fra Frankrike, Spania, Italia etc. skal det registreres EØS-informasjon og da normalt EHIC-informasjon.
+
+Pasienter fra Norden
+For pasienter fra nordiske land (DK, IS, FI, SE, FO, GL) gjøres det unntak fra hovedregelen. Hvis pasienten er fra et av de andre nordiske landene (inkludert Færøyene og Grønland) kan pasienten dokumentere sine rettigheter med nordisk adresse istedenfor å oppgi rettighetsdokumentasjon.
+Unntaket over gjelder ikke dersom pasienter dokumenter sine rettigheter med EØS-dokument S2.
+
+Pasienter fra andre konvensjonsland
+PASS kan benyttes for statsborgere fra Australia (AU) og den kanadiske delstaten Quebec (landkode QB)
+Pasienter fra Australia kan også benytte gyldig Medicare- kort som dokumentasjon.
+
+Arbeidstakere i Norge
+Personer som jobber i Norge (arbeidstaker) vil som regel være trygdet i Norge, og for disse pasientene skal det heller ikke angis informasjon om konvensjonsavtale. Disse pasientene vil normalt ha d-nummer evt. fødselsnummer.
+
+
+**dok**
+
+Kodeverk: 7462 EØS dokumentasjon
+
+- S1       EØS-dokument S1 (tidligere E106 og E109)
+- S2       EØS-dokument S2 (tidligere E112)
+- S3       EØS-dokument S3
+- DA1   EØS-dokument DA1 (tidligere E123)
+- PASS	Pass
+- EHIC	Helsetrygdkort (European Health Insurance Card eller UK Global Insurance Card )
+- HAST Hasteblankett (hasteblankett benyttes som erstatning for EHIC)
+- MEDI Medicare, kan benyttes for borgere fra Australia i stedet for pass
+
+**cardId**
+
+EHIC kortnummer (felt 8). Må oppgis hvis dok er angitt som EHIC Helsetrygdkort. I enkelte tilfeller kan det også være aktuelt for HAST dersom kortnummer er oppgitt.
+
+
+**id**
+
+Identifikasjonsnummeret oppgitt på dokumentasjonen  Må oppgis for alle kategorier av dokumentasjon
+- EHIC/HAST (felt 6)
+- S1/S2/S3/DA 1 (felt 1.1)
+- PASS
+  
+**trygdekontorNavn**
+
+Institusjonsnavnet oppgitt på EØS dokumentasjonen.
+
+Må oppgis hvis dok er angitt som S2, S3, DA1, EHIC, HAST
+- EHIC/HAST (felt 7)
+- S2 (felt 4.1)
+- S3 (felt 3.1)
+- DA1 (felt 5.1)  
+
+**trygdekontorNr**
+
+Institusjonsnummeret oppgitt på EØS dokumentasjonen.
+Må oppgis hvis dok er angitt som S2, S3, DA1, EHIC, HAST
+- EHIC/HAST (felt 7)
+- S2 (felt 4.1)
+- S3 (felt 3.1)
+- DA1 (felt 5.1)
+
+**gyldighetFra**
+
+Gyldighetsdato fra oppgitt på EØS-dokumentasjon. Dato må oppgis hvis dok er angitt som HAST eller S2, i enkelte tilfeller kan det også være aktuelt for DA1.
+- HAST
+- S2 (felt 2.3.1)
+- DA1 (felt 2.2.2 )
+
+
+**gyldighet**
+
+Gyldighetsdatoen til oppgitt på EØS-dokumentasjon. Må oppgis hvis dok er angitt som EHIC, HAST eller S2, i enkelte tilfeller kan det også være aktuelt for DA1
+
+- HAST
+- S2 (felt 2.3.2)
+- DA1 (felt 2.2.3)
+
+**utstedelsesdato**
+
+Datoen dokumentet ble utstedt av annet EØS-land.  
+Dato må oppgis hvis dok er angitt som HAST eller S2, i enkelte tilfeller kan det også være aktuelt for DA1.
+
+
 ----
 
 ##### diagnoser

@@ -1,3 +1,10 @@
+## 2026-06-02
+behandlerkravmelding_json.md
+- Oppdatert beskrivelsen av felter for EEA dokumentasjon
+
+
+
+
 ## 2026-05-28
 testdata.md
 - Lagt krav om registrering av organisasjon i testdatasettet til Tenor eller det 'ekte' Enhetsregisteret for å kunne bruke den i testmiljøet
