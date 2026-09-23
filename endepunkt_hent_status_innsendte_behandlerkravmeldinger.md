@@ -18,14 +18,14 @@ Etter at et **behandlerkrav** er sendt inn til KUHR, kan dette API-et brukes for
 En krav som sendes til KUHR går igjennom tre steg frem til en endelig utbetaling og utsending av vedtaksbrev. Disse går i sekvens, er asynkrone både internt og i forhold til hverandre og kan variere i behandlingstid avhengig av størrelse på kravet, eksterne systemer og prosesser og eventuell manuellsaksbehandling.  
 
 ### **meldingsstatus**
-Først mottas kravet som en melding og det gjøres en grunnleggende teknisk kontroll om kravet kan behandles, før det sendes videre til kontrollen. Dette steget tar normalt 1-2 sekunder, før meldingen er sendt til behandling.
+Først mottas kravet som en melding og det gjøres en grunnleggende teknisk kontroll om kravet kan behandles, før det sendes videre til kontrollen. Dette steget tar normalt 1-2 sekunder, før meldingen er sendt til kontroll.. Når behandlingen er sendt til kontroll settes status til ferdig_behandlet.
 
 
 | Verdi                   | Beskrivelse                                              |
 |-------------------------|----------------------------------------------------------|
 | `mottatt`               | Meldingen er mottatt og venter på videre behandling.     |
 | `klar_til_behandling`   | Meldingen er klar til kontroll og eventuell utbetaling.  |
-| `sendt_til_behandling`  | Meldingen er sendt til kontroll og eventuell utbetaling. |
+| `ferdig_behandlet`      | Meldingen er ferdig behandlet.                           |
 | `feil_i_melding`        | Teknisk feil i meldingen, den kan ikke behandles videre. |
 
 ### **kontrollstatus**
@@ -172,7 +172,7 @@ GET /kuhr/krav/v1/data/behandlerkravmelding
     },
     {
       "behandlerkravmeldingId": "ab1355d2-871b-4cc7-a143-f62125fab9ca",
-      "meldingsstatus": "sendt_til_behandling",
+      "meldingsstatus": "ferdig_behandlet",
       "kontrollstatus": "ferdig_kontrollert",
       "utbetalingsstatus": "utbetalt",
       "innsendingId": "",
@@ -181,7 +181,8 @@ GET /kuhr/krav/v1/data/behandlerkravmelding
       "mottattidspunkt" : "2025-07-16T11:20:00+02:00",
       "sumKravbelop" : 500,
       "sumUtbetaltbelop" : 500,
-      "antallRegninger" : 1
+      "antallRegninger" : 1,
+      "rebehandling" : false
     }
   ]
 }
@@ -204,13 +205,14 @@ GET /kuhr/krav/v1/data/behandlerkravmelding/3f5cb512-d274-4c93-90af-437391c4294a
   "behandlerkravmeldinger": [
     {
       "behandlerkravmeldingId": "3f5cb512-d274-4c93-90af-437391c4294a",
-      "meldingsstatus": "sendt_til_behandling",
+      "meldingsstatus": "ferdig_behandlet",
       "kontrollstatus": "ferdig_kontrollert",
       "utbetalingsstatus": "ingen_utbetaling",
       "innsendingId": "100001811800023",
       "vedtakId": "100001811802344",
       "praksisId": "1004326178",
       "mottattidspunkt": "2025-07-16T11:20:00+02:00",
+      "rebehandling": false,
       "innsending": {
         "sumKravbelop": 396,
         "sumUtbetaltbelop": 198,

@@ -532,7 +532,7 @@ Pasienter som er stønadsberettiget i henhold til gjensidighetsavtale med annen 
 For disse pasientene skal det foretas et etteroppgjør mellom Norge og aktuelt land og dermed må diverse informasjon om pasienten og fremvist rettighetsdokumentasjon oppgis i oppgjørsmeldingen.
 
 Pasienter fra andre EØS-land og Storbritannia
-Hvis pasienten kommer fra et EØS-land (landkode = AT, BE, BG, CY, CZ, DE,  EE, ES,  FR,  GR, HU, HR, IE,  IT, LI, LT, LU, LV, MT, NL, PL, PT, RO,  SI, SK)  skal i utgangspunktet EØS-dokumentasjon oppgis.
+Hvis pasienten kommer fra et EØS-land (landkode = AT, BE, BG, CH, CY, CZ, DE,  EE, ES,  FR,  GR, HU, HR, IE,  IT, LI, LT, LU, LV, MT, NL, PL, PT, RO,  SI, SK)  skal i utgangspunktet EØS-dokumentasjon oppgis.
 Hvis pasienten er fra et EØS-land vil det normale være at pasienten har med et Helsetrygdkort (EuropeanHealthInsuranceCard - EHIC) og at informasjonen som står på dette kortet må registreres på regningen til Helfo. Dette betyr for eksempel at for turister fra Frankrike, Spania, Italia etc. skal det registreres EØS-informasjon og da normalt EHIC-informasjon.
 
 Pasienter fra Norden

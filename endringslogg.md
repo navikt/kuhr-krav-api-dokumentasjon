@@ -1,8 +1,18 @@
+## 2026-09-23
+readme.md
+- Endret beskrivelse av bruken av HelseID og Maskinporten for virsomheter. Understøtter nå både HelseID og Maskinporten med delegering for virksomheter, men HelseID er anbefalt.
+
+testdata.md
+- Eksempel på full request for test token tjenesten
+
+endepunkt_hent_status_innsendte_behandlerkravmeldinger.md
+- Lagt til meldingsstatus ferdig_behandlet i statusoversikten, erstatter sendt_til_behandling. Dette er kun en dokumentasjonsendring, det er ingen endring i APIet. Status var alltid ferdig_behandlet for alle meldinger i systemet.
+- Oppdatert eksempler med riktig status ferdig_behandlet
+
+
 ## 2026-06-02
 behandlerkravmelding_json.md
 - Oppdatert beskrivelsen av felter for EEA dokumentasjon
-
-
 
 
 ## 2026-05-28

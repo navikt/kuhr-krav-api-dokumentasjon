@@ -78,9 +78,23 @@ API-et benytter flere kodeverk og kodetabeller. Disse er dokumentert her:
 
 ## Autentisering og autorisasjon
 
+### HelseID (behandlere og virksomheter)
+
+Behandlere som fremsetter krav personlig bruker **HelseID** til autentisering og autorisasjon. Det betyr at EPJen må tilby sluttbruker pålogging med HelseID.
+Behandleren må være registrert hos Helfo med gyldig avtale og praksis.
+
+Det er også mulig å bruke HelseID maskin til maskin for virksomheter. Det krever at virksomheten er registrert i HelseID og at det settes opp en klient for maskin-til-maskin-autentisering. Det støttes delegering i HelseID, som gjør det mulig å opptre på vegne av en annen virksomhet.
+
+Mer informasjon:
+[HelseID – NHN utviklerportal](https://utviklerportal.nhn.no/informasjonstjenester/helseid/)
+
+For APIet brukes HelseID scope **hdir:kuhr-krav-api/krav**
+
+---
+
 ### Maskinporten (virksomheter)
 
-Virksomheter bruker **Maskinporten** for autentisering og autorisasjon.
+Virksomheter kan bruke **Maskinporten** for autentisering og autorisasjon hvis det ikke er mulig å bruke HelseID.
 Organisasjonen må være registrert både i Maskinporten og hos Helfo, med samme organisasjonsnummer.
 
 Mer informasjon:
@@ -96,19 +110,7 @@ API-tilgangen kan delegeres videre til en leverandør gjennom Altinn.
 
 ---
 
-### HelseID (behandlere og virksomheter)
 
-Behandlere som fremsetter krav personlig bruker **HelseID** til autentisering og autorisasjon. Det betyr at EPJen må tilby sluttbruker pålogging med HelseID.
-Behandleren må være registrert hos Helfo med gyldig avtale og praksis.
-
-Det er også mulig å bruke HelseID maskin til maskin for virksomheter som alternativ til Maskinporten. Det krever at virksomheten er registrert i HelseID og at det settes opp en klient for maskin-til-maskin-autentisering. Det støttes ikke delegering i HelseID, så det må opprettes en klient for hver virksomhet som skal bruke API-et.
-
-Mer informasjon:
-[HelseID – NHN utviklerportal](https://utviklerportal.nhn.no/informasjonstjenester/helseid/)
-
-For APIet brukes HelseID scope **hdir:kuhr-krav-api/krav**
-
----
 
 ## Kryptering av helseopplysninger
 
