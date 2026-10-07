@@ -6,7 +6,7 @@ For å kunne teste APIet i testmiljøet må det registreres en praksis for behan
 sånn at EPJ leverandørene selv kan gjøre den nødvendige registreringen.
 
 Finn en test-helseaktør med HPRnr og FNR i SyntPop.
-https://www.nhn.no/tjenester/syntpop
+https://www.nhn.no/tjenester/testunivers/syntpop
 
 Logg på Tjenesteportalen for helseaktører og registrer praksisinformasjon.
 https://praksisinformasjon.test.helsedirektoratet.no/

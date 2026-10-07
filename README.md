@@ -1,7 +1,5 @@
 # KUHR Krav API
 
-**(Dette er dokumentasjon for et API som brukes i en pilot – det er ikke et ferdig produkt for allmenn bruk.)**
-
 API-et brukes av EPJ-systemer til innsending av krav og rapportering av egenandeler til Helfo. Innsending skjer gjennom en behandlerkravmelding (BKM) via en HTTP POST-request. API-et gir også mulighet til å hente status og følge opp kontroll og utbetaling.
 
 API-et kan benyttes av kommuner, privatpraktiserende behandlere og andre helseaktører, inkludert: leger, helsestasjoner, psykologer, fysioterapeuter, kiropraktorer, tannleger, tannpleiere, rehabiliteringsinstitusjoner, audiopedagoger, logopeder, ortoptister, jordmødre – samt Pasientreiser ANS.

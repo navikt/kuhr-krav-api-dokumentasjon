@@ -1,3 +1,14 @@
+## 2026-10-07
+
+README.md
+- Fjernet varsel om at APIet ikke er klart for allmenn bruk
+
+tesdata.md
+- Endret URLen til SyntPop
+
+
+
+
 ## 2026-09-23
 readme.md
 - Endret beskrivelse av bruken av HelseID og Maskinporten for virsomheter. Understøtter nå både HelseID og Maskinporten med delegering for virksomheter, men HelseID er anbefalt.
